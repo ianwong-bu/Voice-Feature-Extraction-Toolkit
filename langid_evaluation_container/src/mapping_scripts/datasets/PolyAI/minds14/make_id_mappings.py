@@ -6,7 +6,7 @@ import datasets
 
 if __name__ == "__main__" and __package__ is None:
     from os import sys, path
-    sys.path.append(path.dirname(path.dirname(path.dirname(path.abspath(__file__)))))
+    sys.path.append("/app")
 import global_id_utils
 
 def create_mappings(output_folder_path: Path):

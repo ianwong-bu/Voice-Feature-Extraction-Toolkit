@@ -7,8 +7,10 @@ model_id = "facebook/mms-lid-4017"
 
 if __name__ == "__main__" and __package__ is None:
     from os import sys, path
-    sys.path.append(path.dirname(path.dirname(path.dirname(path.abspath(__file__)))))
-    sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+    # global_id_utils
+    sys.path.append("/app")
+    # mapping script utils
+    sys.path.append("/app/mapping_scripts")
 
 import global_id_utils
 import utils

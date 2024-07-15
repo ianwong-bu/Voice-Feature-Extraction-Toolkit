@@ -118,9 +118,6 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
 )
 
-eval_results = trainer.evaluate(model_dataset)
-eval_results
-
 prediction_output = trainer.predict(model_dataset)
 
 """# Evaluate"""

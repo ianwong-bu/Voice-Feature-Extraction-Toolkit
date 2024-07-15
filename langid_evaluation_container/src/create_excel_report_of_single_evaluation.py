@@ -32,7 +32,7 @@ report_template_path: Path = Path("/app/report template.xlsx")
 model_id = sys.argv[1]
 dataset_id = sys.argv[2]
 
-model_output_dir: Path = Path("/output/") / Path(model_id.replace("/", "_") + " on " + model_id.replace("/", "_"))
+model_output_dir: Path = Path("/output/") / Path(model_id.replace("/", "_") + " on " + dataset_id.replace("/", "_"))
 
 report_output_dir = model_output_dir / "reports"
 report_output_dir.mkdir(exist_ok=True)

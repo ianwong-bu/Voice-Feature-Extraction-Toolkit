@@ -8,10 +8,9 @@ model_id = "sanchit-gandhi/whisper-medium-fleurs-lang-id"
 if __name__ == "__main__" and __package__ is None:
   from os import sys, path
   # global_id_utils
-  print(Path(__file__).resolve())
-  sys.path.append(str(Path(__file__).resolve().parents[4]))
+  sys.path.append("/app")
   # mapping script utils
-  sys.path.append(str(Path(__file__).resolve().parents[3]))
+  sys.path.append("/app/mapping_scripts")
 
 import global_id_utils
 import utils

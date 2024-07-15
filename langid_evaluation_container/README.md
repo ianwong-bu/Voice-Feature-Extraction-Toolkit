@@ -2,7 +2,15 @@
 1. Mount a writable volume to `/output`
 2. Start the container
 ```bash
-docker run <this container's image> <model_id> <dataset_id> (evaluate|report|both)
+docker run <this container's image> (evaluate|report|both) <model_id> <dataset_id> <dataset_config_name> <dataset_split>
+```
+
+`dataset_config_name` and `dataset_split` are specific to each dataset.
+Look at the dataset card on HuggingFace for supported values.
+
+A quick example:
+```bash
+docker run <this container's image> both sanchit-gandhi/whisper-medium-fleurs-lang-id PolyAI/minds14 all 'train[:20]'
 ```
 
 The model and dataset must have mapping scripts defined in `src/mapping_scripts`.

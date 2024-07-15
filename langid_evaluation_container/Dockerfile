@@ -7,6 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY src/ /app/
 
-RUN for script in mapping_scripts/{datasets,models}/*/*/make_id_mappings.py; do python3 $script; done
+RUN for script in mapping_scripts/{datasets,models}/*/*/make_id_mappings.py; do python3 "$script"; done
 
 ENTRYPOINT ["/app/run.sh"]
