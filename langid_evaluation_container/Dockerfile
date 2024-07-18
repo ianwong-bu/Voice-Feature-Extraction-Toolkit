@@ -2,10 +2,9 @@ FROM python:3.10.12-slim-bullseye
 
 WORKDIR /app/
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN --mount=type=bind,source=requirements.txt,target=/tmp/requirements.txt pip install --no-cache-dir -r /tmp/requirements.txt
 
-COPY src/ /app/
+COPY src/. /app/
 
 RUN for script in mapping_scripts/{datasets,models}/*/*/make_id_mappings.py; do python3 "$script"; done
 
