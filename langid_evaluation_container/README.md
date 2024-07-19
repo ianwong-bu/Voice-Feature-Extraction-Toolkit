@@ -6,7 +6,7 @@ docker run <this container's image> (evaluate|report|both) <model_id> <dataset_i
 ```
 
 `dataset_config_name` and `dataset_split` are specific to each dataset.
-Look at the dataset card on HuggingFace for supported values.
+Look at a dataset's card on HuggingFace for supported values.
 
 A quick example:
 ```bash

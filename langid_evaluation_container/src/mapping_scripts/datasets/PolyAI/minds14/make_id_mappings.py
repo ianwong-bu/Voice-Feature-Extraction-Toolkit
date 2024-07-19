@@ -15,7 +15,7 @@ def create_mappings(output_folder_path: Path):
   """
   dataset_id = "PolyAI/minds14"
   lang_id_column_name = "lang_id"
-  dataset = datasets.load_dataset("PolyAI/minds14", "all", split="train")
+  dataset = datasets.load_dataset("PolyAI/minds14", "all", split="train", trust_remote_code=True)
 
   int2str = dataset.features[lang_id_column_name]._int2str
   str2int = dataset.features[lang_id_column_name]._str2int
