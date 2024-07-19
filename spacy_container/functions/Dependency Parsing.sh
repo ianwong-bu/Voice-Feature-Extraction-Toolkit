@@ -26,11 +26,14 @@ if [ ! -f "$BASE_DIR/$input_file" ]; then
     exit 1
 fi
 
-# Read the text from example.txt
+# Read the text from the input file
 text=$(cat "$BASE_DIR/$input_file")
 
-# Send a test request to the language detection endpoint and save the response
-response=$(curl --fail -s -X POST -H "Content-Type: application/json" -d "{\"text\": \"$text\"}" http://localhost:$port/detect_language)
+# print port
+echo "Port: $port" | tee -a "$BASE_DIR/outputs/logs.txt"
+
+# Send a test request to the tokenization endpoint and save the response
+response=$(curl --fail -s -X POST -H "Content-Type: application/json" -d "{\"text\": \"$text\"}" http://localhost:$port/dep_parse)
 
 # Check the exit status of the curl command
 if [ $? -ne 0 ]; then
@@ -41,23 +44,23 @@ fi
 
 # Check if the response contains an error
 if echo "$response" | grep -q "error"; then
-    echo "Error occurred during language detection:"
+    echo "Error occurred during dependency parsing:"
     echo "$response"
     docker logs $container_id >> "$BASE_DIR/outputs/logs.txt"
     exit 1
 fi
 
-# Save the language detection results to a file
-echo "$response" > "$BASE_DIR/outputs/language_results.txt"
+# Save the dependency parsing results to a file
+echo "$response" > "$BASE_DIR/outputs/dep_parsing_results.txt"
 
 # Append container logs to logs.txt without writing to stdout
 #docker logs $container_id >> "$BASE_DIR/outputs/logs.txt" 2>&1
 
-echo "Language detection completed successfully."
+echo "Dependency parsing completed successfully."
 
-# Display the language detection results
-echo "Language detection results:"
-cat "$BASE_DIR/outputs/language_results.txt"
+# Display the dependency parsing results
+echo "Dependency parsing results:"
+cat "$BASE_DIR/outputs/dep_parsing_results.txt"
 
 # Exit successfully
 exit 0

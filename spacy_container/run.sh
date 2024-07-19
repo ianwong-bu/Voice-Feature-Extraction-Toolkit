@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Step 1: Make output directory if it does not exist
+# Step 1: Make outputs directory if it does not exist
 mkdir -p outputs
 
 # Step 2: Redirect all output to logs.txt, overwriting the previous logs
@@ -8,7 +8,7 @@ exec &> >(tee outputs/logs.txt)
 
 # Step 3: Build the Docker image
 echo "Building container..."
-if docker build -t nltk-demo . > /dev/null 2>&1; then
+if docker build -t spacy-demo . > /dev/null 2>&1; then
     echo "Build successful."
 else
     echo "Failed to build Docker image."
@@ -22,7 +22,7 @@ while true; do
 
     if [[ "$port" =~ ^[0-9]+$ ]] && [ "$port" -ge 1 ] && [ "$port" -le 65535 ]; then
         echo "Attempting to start container on port $port..."
-        container_id=$(docker run -d -p $port:5000 nltk-demo 2>/dev/null)
+        container_id=$(docker run -d -p $port:5000 spacy-demo 2>/dev/null)
         if [ $? -eq 0 ]; then
             echo "Container started successfully on port $port."
             break
@@ -46,7 +46,7 @@ if [ $(docker inspect -f '{{.State.Running}}' $container_id) != "true" ]; then
     docker logs $container_id
     docker stop $container_id
     docker rm $container_id
-    docker rmi nltk-demo
+    docker rmi spacy-demo
     exit 1
 fi
 
@@ -57,8 +57,7 @@ while ! curl -s --head http://localhost:$port >/dev/null; do
 done
 echo "Container is ready."
 
-# Step 7:
-# Get the available functions and implement choice loop
+# Step 7: Get the available functions and implement choice loop
 
 # Set the path to the functions folder
 functions_folder="./functions"
@@ -103,7 +102,11 @@ while true; do
     if [[ "$choice" =~ ^[0-9]+$ ]] && [ "$choice" -ge 1 ] && [ "$choice" -le ${#functions[@]} ]; then
         selected_function="${functions[$((choice-1))]}"
         echo "Running '$selected_function' function..."
-        bash "$functions_folder/$selected_function.sh" $container_id $port
+        bash "$functions_folder/${selected_function}.sh" $container_id $port
+        if [ $? -ne 0 ]; then
+            echo "Failed to run $selected_function"
+            break
+        fi
     elif [ "$choice" -eq $exit_option ]; then
         echo "Exiting the program."
         break
@@ -118,6 +121,6 @@ docker stop $container_id
 docker rm $container_id
 
 echo "Removing Docker image..."
-docker rmi nltk-demo
+docker rmi spacy-demo
 
 echo "Script execution completed."

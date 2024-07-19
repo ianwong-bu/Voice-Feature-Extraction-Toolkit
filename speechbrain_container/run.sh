@@ -8,7 +8,7 @@ exec &> >(tee outputs/logs.txt)
 
 # Step 3: Build the Docker image
 echo "Building container..."
-if docker build -t nltk-demo . > /dev/null 2>&1; then
+if docker build -t speechbrain-demo . > /dev/null 2>&1; then
     echo "Build successful."
 else
     echo "Failed to build Docker image."
@@ -22,7 +22,7 @@ while true; do
 
     if [[ "$port" =~ ^[0-9]+$ ]] && [ "$port" -ge 1 ] && [ "$port" -le 65535 ]; then
         echo "Attempting to start container on port $port..."
-        container_id=$(docker run -d -p $port:5000 nltk-demo 2>/dev/null)
+        container_id=$(docker run -d -p $port:5000 speechbrain-demo 2>/dev/null)
         if [ $? -eq 0 ]; then
             echo "Container started successfully on port $port."
             break
@@ -46,19 +46,16 @@ if [ $(docker inspect -f '{{.State.Running}}' $container_id) != "true" ]; then
     docker logs $container_id
     docker stop $container_id
     docker rm $container_id
-    docker rmi nltk-demo
+    docker rmi speechbrain-demo
     exit 1
 fi
 
 # Step 6: Wait for container to initialize
 echo "Waiting for container to initialize..."
-while ! curl -s --head http://localhost:$port >/dev/null; do
-    sleep 1
-done
+sleep 10
 echo "Container is ready."
 
-# Step 7:
-# Get the available functions and implement choice loop
+# Step 7: Get the available functions and implement choice loop
 
 # Set the path to the functions folder
 functions_folder="./functions"
@@ -112,12 +109,15 @@ while true; do
     fi
 done
 
+# Append container logs to logs.txt
+docker logs $container_id >> outputs/logs.txt
+
 # Clean up
 echo "Stopping and removing Docker container..."
 docker stop $container_id
 docker rm $container_id
 
 echo "Removing Docker image..."
-docker rmi nltk-demo
+docker rmi speechbrain-demo
 
 echo "Script execution completed."
