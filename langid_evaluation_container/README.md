@@ -26,3 +26,10 @@ allowing models to be evaluated on datasets that the models were not originally 
 
 ## Datasets
 - PolyAI/minds14
+
+# Global IDs
+The mapping scripts use "global ids" for each language since `datasets` work better with numerical ids
+rather than text ids.
+Global ids are based on iso639 part 3 language codes.
+The codes are created by treating the code as a 3-digit base-26 number, with a = 0 and z = 25.
+So a language code of `yue` has a global id 25 * 26^2 + 20 * 26 + 4

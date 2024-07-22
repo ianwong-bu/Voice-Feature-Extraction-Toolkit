@@ -25,3 +25,5 @@ This repository contains examples of the usage of various voice feature extracti
 ### espnet_example
 - Docker container for running scripts that use the espnet Python library
 - Example scripts showing genereation of a transcription and a spectogram on example data
+### langid_evaluation_container
+- Docker container for evaluating language identification models on datasets
