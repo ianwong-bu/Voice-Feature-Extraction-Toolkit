@@ -10,7 +10,7 @@ Look at a dataset's card on HuggingFace for supported values.
 
 A quick example:
 ```bash
-docker run <this container's image> both sanchit-gandhi/whisper-medium-fleurs-lang-id PolyAI/minds14 all 'train[:20]'
+docker run -it -v output:/output <this container's image> both sanchit-gandhi/whisper-medium-fleurs-lang-id PolyAI/minds14 all 'train[:20]'
 ```
 
 The model and dataset must have mapping scripts defined in `src/mapping_scripts`.
