@@ -98,7 +98,15 @@ simple_class_stats_df = simple_class_stats_df[simple_class_stats_df.index.isin(t
 
 performance = pd.read_json(model_output_dir / "inference_metrics.json", typ='series')
 
-performance.index = ["Loss", "Accuracy", "Runtime (s)", "Samples/second", "Steps/second"]
+performance = performance[["test_loss", "test_accuracy", "test_runtime", "test_samples_per_second", "test_steps_per_second"]]
+
+performance.rename({
+  "test_loss": "Loss",
+  "test_accuracy": "Accuracy",
+  "test_runtime": "Runtime (s)",
+  "test_samples_per_second": "Samples/second",
+  "test_steps_per_second": "Steps/second"
+}, inplace=True)
 
 performance["Total samples"] = len(predictions)
 
