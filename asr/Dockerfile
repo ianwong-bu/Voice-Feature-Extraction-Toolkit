@@ -1,8 +1,8 @@
 FROM huggingface/transformers-pytorch-gpu:latest
 
-RUN python3 -m pip install datasets
+RUN python3 -m pip --no-cache install datasets transformers evaluate jiwer soundfile librosa
 
 WORKDIR /app
-COPY asr.py .
+COPY src/. .
 
-ENTRYPOINT ["python3", "asr.py"]
+ENTRYPOINT ["python3", "/app/asr.py"]
