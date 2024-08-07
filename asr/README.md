@@ -11,4 +11,4 @@ Example:
 docker run -it <image_id> NbAiLabBeta/nb-whisper-medium-verbatim amaai-lab/DisfluencySpeech default train[:5]
 ```
 
-Output will be JSON files in the output volume
+The container's output will be JSON files in the output volume
