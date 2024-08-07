@@ -32,7 +32,7 @@ def main(model_id: str, dataset_id: str, dataset_config_name: str, dataset_split
     import model_loader
     model = model_loader.load()
 
-    predictions = model(dataset["audio"])
+    predictions = model(dataset.select_columns("audio"))
 
     predictions = [pred["text"] for pred in predictions]
 
