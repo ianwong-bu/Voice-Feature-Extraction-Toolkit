@@ -1,27 +1,16 @@
-## Voice-Feature-Extraction-Toolkit
-This repository contains examples of the usage of various voice feature extraction libraries and tools. Example files and docker containers are provided.
-### opensmile
-- Docker container for running scripts that use the openSMILE Python library
-- Shows examples of how to use the openSMILE Python library to generate Low Level Descriptors (LLDs) and Functionals from the ComParE 2016 feature set
-### jiwer_container
-- Docker container for running scripts that use the jiwer Python library
-- Example script of how to use jiwer to compare two transcripts
-### nltk_container
-- Docker container for running scripts that use the nltk Python library
-- Flask API for calling nltk functions
-- Example subroutines demonstrating use of nltk library on example files
-### spacy_container
-- Docker container for running scripts that use the spaCy Python library
-- Flask API for calling spaCy functions
-- Example subroutines demonstrating use of spaCy library on example files
-### speechbrain_container
-- Docker container for running scripts that use the speechbrain Python library
-- Flask API for calling speechbrain functions
-- Example subroutines demonstrating use of speechbrain library on example files
-### 2vec
-- Docker container for processing files using models of the transformers Python library
-- Flask API for processing files using wav2vec and data2vec models
-- Example subroutines demonstrating API outputs on example files
-### espnet_example
-- Docker container for running scripts that use the espnet Python library
-- Example scripts showing genereation of a transcription and a spectogram on example data
+# Voice-Feature-Extraction-Toolkit
+This repository contains READMEs, sample data, and Docker containers to facilitate the usage of various voice feature extraction libraries and tools.
+## 2vec
+For processing data via the following models: [Data2Vec](https://huggingface.co/docs/transformers/en/model_doc/data2vec) and [Wav2Vec](https://huggingface.co/docs/transformers/en/model_doc/wav2vec2).
+## espnet
+ESPnet is an end-to-end Python speech processing toolkit, including functionality such as transcription and diarization.
+## jiwer
+JiWER is a python package to evaluate an automatic speech recognition system. JiWER supports the following measures: word error rate (WER), match error rate (MER), word information lost (WIL), word information preserved (WIP), and character error rate (CER).
+## nltk
+NLTK is a suite of open source Python modules, data sets, and tutorials supporting research and development in natural language processing.
+## opensmile
+openSMILE (open-source Speech and Music Interpretation by Large-space Extraction) is an open-source toolkit for audio analysis especially targeted at speech and music applications (e.g. automatic speech recognition, speaker identification, emotion recognition, etc.).
+## spacy
+spaCy is a Python library for industrial-strength natural language processing, including functionality such as: tokenization, part-of-speech tagging, dependency parsing, lemmatization, sentence boundary location, and named entity recognition.
+## speechbrain
+SpeechBrain is an open-source PyTorch toolkit for speech and text processing.
