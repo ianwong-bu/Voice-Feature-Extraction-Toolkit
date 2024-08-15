@@ -1,9 +1,18 @@
+# Language Identification
+Container to run and evaluate different language identification models on different datasets.
+
 # Usage
-1. Mount a writable volume to `/output`
-2. Start the container
+This container writes the evaluation output in the `/output` directory within the container
 ```bash
 docker run <this container's image> (evaluate|report|both) <model_id> <dataset_id> <dataset_config_name> <dataset_split>
 ```
+
+`evaluate` runs the model and evaluates its predictions.
+`report` creates an Excel report of the model's performance.
+Requires that an `evaluate` command was run previously to create model's predictions.
+`both` runs both `evaluate` and `report`.
+
+See [below](#supported-models-and-datasets) for supported values for `model_id` and `dataset_id`
 
 `dataset_config_name` and `dataset_split` are specific to each dataset.
 Look at a dataset's card on HuggingFace for supported values.
@@ -12,10 +21,6 @@ A quick example:
 ```bash
 docker run -it -v output:/output <this container's image> both sanchit-gandhi/whisper-medium-fleurs-lang-id PolyAI/minds14 all 'train[:5]'
 ```
-
-The model and dataset must have mapping scripts defined in `src/mapping_scripts`.
-Mapping scripts enable translation between model- and dataset-specific ids,
-allowing models to be evaluated on datasets that the models were not originally trained on.
 
 3. View prediction output and/or generated report in the volume mounted to `/output`
 
@@ -27,7 +32,12 @@ allowing models to be evaluated on datasets that the models were not originally 
 ## Datasets
 - PolyAI/minds14
 
-# Global IDs
+## More information
+See the model or dataset's card on HuggingFace for more information about each model or dataset.
+
+# Technical Details
+You can skip this section unless you are trying to add a new model/dataset or otherwise contribute to the code
+## Global IDs
 The mapping scripts use "global ids" for each language since `datasets` work better with numerical ids
 rather than text ids.
 Global ids are based on iso639 part 3 language codes.
