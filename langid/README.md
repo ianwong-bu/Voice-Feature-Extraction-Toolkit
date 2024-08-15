@@ -14,16 +14,19 @@ Requires that an `evaluate` command was run previously to create model's predict
 
 See [below](#supported-models-and-datasets) for supported values for `model_id` and `dataset_id`
 
-`dataset_config_name` and `dataset_split` are specific to each dataset.
-Look at a dataset's card on HuggingFace for supported values.
+`dataset_config_name` and `dataset_split` are dataset-specific names for different subsets of a dataset.
+See the dataset card on HuggingFace for the config name and splits defined in a particular dataset.
+Generally, for spoken language datasets, the config name is a language subset
+and the split is one of train, dev, test, and val.
 
-A quick example:
+# Example
 ```bash
 docker run -it -v output:/output <this container's image> both sanchit-gandhi/whisper-medium-fleurs-lang-id PolyAI/minds14 all 'train[:5]'
 ```
 
 This evaluates the model `sanchit-gandhi/whisper-medium-fleurs-lang-id` on the dataset `PolyAI/minds14` on first five samples of the `train` split of the `all` config of the dataset (which, for this dataset, includes all languages).
 
+# Output
 View prediction output and/or generated report will be in the volume mounted to `/output`.
 Output includes
 - JSON of the predictions and labels
