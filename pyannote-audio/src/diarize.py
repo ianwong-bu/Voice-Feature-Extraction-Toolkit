@@ -25,15 +25,15 @@ def main(audio_path: str, output_path: str, huggingface_auth_token: str | None):
             "stop": turn.stop,
         })
 
-    with open(output_path, "w"):
-        json.dump(result, output_path)
+    with open(output_path, "w") as out_file:
+        diarization.write_rttm(out_file)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         prog="diarize",
     )
     parser.add_argument("audio_path")
-    parser.add_argument("-o", "--output", default="/output/diaritization-output.json")
+    parser.add_argument("-o", "--output", default="/output/diaritization-output.rttm")
     parser.add_argument("-t", "--huggingface-auth-token")
 
     args = parser.parse_args()
