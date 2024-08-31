@@ -37,11 +37,11 @@ The Excel report contains similar information but in human-readable form.
 
 # Supported models and datasets
 ## Models
-- facebook/mms-lid-4017
-- sanchit-gandhi/whisper-medium-fleurs
+- [facebook/mms-lid-4017](https://huggingface.co/facebook/mms-lid-4017)
+- [sanchit-gandhi/whisper-medium-fleurs](https://huggingface.co/sanchit-gandhi/whisper-medium-fleurs-lang-id)
 
 ## Datasets
-- PolyAI/minds14
+- [PolyAI/minds14](https://huggingface.co/datasets/PolyAI/minds14)
 
 ## More information
 See the model or dataset's card on HuggingFace for more information about each model or dataset.
@@ -54,3 +54,12 @@ rather than text ids.
 Global ids are based on iso639 part 3 language codes.
 The codes are created by treating the code as a 3-digit base-26 number, with a = 0 and z = 25.
 So a language code of `yue` has a global id 25 * 26^2 + 20 * 26 + 4
+
+## Standard dataset format
+A standard format for datasets is used as a common interface between the dataset and model preprocessing scripts.
+A dataset's preprocessing script should create a dataset in the standard format
+and a model should process the standard format dataset into a model-specific format.
+
+The standard format has two columns:
+- `lang_id`: the language global id of the sample. An `int32` column, using the `datasets` types
+- `audio`: the audio of the sample. Make sure this `datasets` `Audio`
