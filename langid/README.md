@@ -46,6 +46,15 @@ The Excel report contains similar information but in human-readable form.
 ## More information
 See the model or dataset's card on HuggingFace for more information about each model or dataset.
 
+# Performance
+The following table lists performance of select model and dataset combinations on small subsets of the datasets (due to performance limitations).
+For more information, a model's card on HuggingFace may have their own benchmark results.
+
+| Model \ Dataset                               | PolyAI/minds14                                    |
+| --------------------------------------------- | ------------------------------------------------- |
+| sanchit-gandhi/whisper-medium-fleurs-lang-id  | Accuracy: 62%, F1 Macro: 0.19, F1 Micro: 0.62     |
+| facebook/mms-lid-4017                         | Accuracy: 88%, F1 Macro: 0.23, F1 Micro: 0.88     |
+
 # Technical Details
 You can skip this section unless you are trying to add a new model/dataset or otherwise contribute to the code
 ## Global IDs
