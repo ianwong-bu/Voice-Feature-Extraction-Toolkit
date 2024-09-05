@@ -4,9 +4,9 @@ import json
 import torch
 from pyannote.audio import Pipeline
 
-def main(audio_path: str, output_path: str, huggingface_auth_token: str | None):
+def main(model: str, audio_path: str, output_path: str, huggingface_auth_token: str | None):
     pipeline = Pipeline.from_pretrained(
-        "pyannote/speaker-diarization-3.1",
+        model,
         use_auth_token=huggingface_auth_token)
 
     # send pipeline to GPU (when available)
@@ -33,6 +33,7 @@ if __name__ == "__main__":
         prog="diarize",
     )
     parser.add_argument("audio_path")
+    parser.add_argument("-m", "--model", default="pyannote/speaker-diarization-3.1")
     parser.add_argument("-o", "--output", default="/output/diaritization-output.rttm")
     parser.add_argument("-t", "--huggingface-auth-token")
 
