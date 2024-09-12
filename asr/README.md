@@ -32,14 +32,14 @@ JSON files include:
 
 # Available Models
 ## General ASR
-- openai/whisper-base
+- [openai/whisper-base](https://huggingface.co/openai/whisper-base)
 ## Verbatim
-- openai/whisper-base/prompting (openai/whisper-base with prompting)
-- NbAiLabBeta/nb-whisper-medium-verbatim
+- [openai/whisper-base/prompting](https://huggingface.co/openai/whisper-base) (openai/whisper-base with prompting)
+- [NbAiLabBeta/nb-whisper-medium-verbatim](https://huggingface.co/NbAiLabBeta/nb-whisper-medium-verbatim)
 
 # Available Datasets
 ## General ASR
-- hf-internal-testing/librispeech_asr_dummy
-- PolyAI/minds14
+- [hf-internal-testing/librispeech_asr_dummy](hf-internal-testing/librispeech_asr_dummy) (purely for testing and debugging)
+- [PolyAI/minds14](https://huggingface.co/datasets/PolyAI/minds14)
 ## Verbtaim
-- amaai-lab/DisfluencySpeech
+- [amaai-lab/DisfluencySpeech](https://huggingface.co/datasets/amaai-lab/DisfluencySpeech)
