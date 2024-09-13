@@ -5,7 +5,7 @@ Includes models and datasets for verbatim transcription, which include disfluenc
 
 # Usage
 ```bash
-docker run -it <image_id> -v <container-output>:/output <model_id> <dataset_id> <dataset_config_name> <dataset_split>
+docker run -it <image_id> -v <container-output>:/output (predict|evaluate) <model_id> <dataset_id> <dataset_config_name> <dataset_split>
 ```
 
 The container writes output to the `/output` folder. Mount a folder on the host to save and view the output with the `-v` or `--mount` flags.
