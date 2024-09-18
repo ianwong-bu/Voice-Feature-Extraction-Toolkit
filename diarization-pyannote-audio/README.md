@@ -8,6 +8,7 @@ docker run -it -v <output_volume_name_or_path>:/output <audio_data_volume_or_dir
 ```
 
 Default output path is `/output/diaritization-output.rttm` within the container
+
 Default model is [`pyannote/speaker-diarization-3.1`](https://huggingface.co/pyannote/speaker-diarization-3.1)
 
 ## Example
