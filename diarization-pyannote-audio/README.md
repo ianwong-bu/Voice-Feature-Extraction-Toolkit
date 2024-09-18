@@ -1,7 +1,5 @@
 Docker container for diarization using [pyannote-audio](https://github.com/pyannote/pyannote-audio)
 
-Prints output and writes a RTTM file
-
 # Usage
 ```bash
 docker run -it -v <output_volume_name_or_path>:/output <audio_data_volume_or_directory>:/data <image_name> -t <huggingface_token> [-o <output_path>] [-m <model_name>] <audio_path_inside_container>
