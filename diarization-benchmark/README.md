@@ -5,6 +5,7 @@ Currently, no new models or datasets have been added. All benchmarks are from up
 Uses the [Voxconverse](https://github.com/joonson/voxconverse) dataset
 
 # Usage
+To run a benchmark with a chosen engine and dataset,
 ```bash
 python3 benchmark.py \
 --type (ACCURACY | CPU | MEMORY) \
@@ -12,8 +13,11 @@ python3 benchmark.py \
 --data-folder (/data/voxconverse/wav/dev | /data/voxconverse/wav/test) \
 --label-folder /data/voxconverse/labels/ \
 --engine <engine> \
-<arguments depending on engine>
+<additional arguments depending on engine>
 ```
+
+Output is printed in the terminal.
+The upstream documentation does not cover whether output is written to files.
 
 For the additional arguments required for each engine, see the [upstream documentation](https://github.com/Picovoice/speaker-diarization-benchmark?tab=readme-ov-file#data)
 
