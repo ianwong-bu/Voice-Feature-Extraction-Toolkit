@@ -5,6 +5,11 @@ COPY ./src/. .
 
 RUN mkdir -p /data/voxconverse/wav/dev /data/voxconverse/wav/test /data/voxconverse/labels/
 
+# Install git
+RUN --mount=type=cache,target=target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && apt-get --no-install-recommends install -y git
+
 # Download VoxConverse data
 ADD https://www.robots.ox.ac.uk/~vgg/data/voxconverse/data/voxconverse_dev_wav.zip /data/voxconverse/dev/
 ADD https://www.robots.ox.ac.uk/~vgg/data/voxconverse/data/voxconverse_test_wav.zip /data/voxconverse/test/
