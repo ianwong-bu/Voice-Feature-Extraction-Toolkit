@@ -1,4 +1,4 @@
-Docker container for https://github.com/Picovoice/speaker-diarization-benchmark
+Docker container based on https://github.com/Picovoice/speaker-diarization-benchmark
 
 Benchmarks several diarization engines/models, reporting several metrics including
 Diarization Error Rate, Jaccard Error Rate, and CPU and memory usage.
@@ -35,6 +35,7 @@ python3 benchmark.py \
 --data-folder /data/voxconverse/wav/test \
 --label-folder /data/voxconverse/labels/ \
 --engine PYANNOTE \
+--type ACCURACY \
 --pyannote-auth-token <HUGGINGFACE_TOKEN>
 ```
 
